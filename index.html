@@ -23,336 +23,58 @@
 <!-- when the change username button is clicked, it should show a form that has a list of all usernames and passwords, and a button to change one -->
 <!-- when the change button is clicked, it should change the username and password from the database -->
 
-<html>
+<!-- make buttons to access admin panel-->
+<!-- make a button to access the admin panel -->
+
+<!-- make a button to access the admin panel -->
+
+<!-- make a button to access the admin panel -->
+
+<html>  
 <head>
-<title>coderunner.me</title>
+    <title>coderunner.me</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Welcome to coderunner.me, you can enter a page password here, and access pages here</h1>
-<form action="index.php" method="post"> 
-<input type="text" name="password" placeholder="password">
-<input type="submit" value="submit">
-</form>
+    <div class="header">
+        <h1>coderunner.me</h1>
+    </div>
+    <div class="content">
+        <h2>you can enter a page password here, and access pages here</h2>
+        <form action="index.php" method="post">
+            <input type="text" name="password" placeholder="password">
+            <input type="submit" name="submit" value="submit">
+        </form>
+    </div>
+    <div class="footer">
+        <h3>footer</h3>
+    </div>
 </body>
 </html>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT password, link FROM passwords";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-if ($_POST["password"] == $row["password"]) {
-header("Location: " . $row["link"]);
-}
-}
-} else {
-echo "0 results";
-}
-$conn->close();
+    $password = $_POST['password'];
+    $submit = $_POST['submit'];
+    $link = mysqli_connect("localhost", "root", "", "coderunner");
+    $query = "SELECT * FROM `passwords` WHERE `password` = '$password'";
+    $result = mysqli_query($link, $query);
+    $row = mysqli_fetch_array($result);
+    if ($submit) {
+        if ($row['password'] == $password) {
+            header("Location: " . $row['link']);
+        } else {
+            echo "password does not exsist";
+        }
+    }
+
 ?>
-
-<!DOCTYPE html>
-<!-- Path: admin.html -->
-<!-- make a website admin pannel -->
-<!-- at the top center of the page, have it say as a title, "welcome to coderunner.me admin panel" -->
-<!-- in the center of the page, have a button that says "back to homepage" -->
-<!-- when the button is clicked, it should redirect the user to the homepage -->
-<!-- in the center of the page, have a button that says "add password" -->
-<!-- when the button is clicked, it should show a form that has a password input box, and a link input box -->
-<!-- when the form is submitted, it should add the password and link to the database -->
-<!-- in the center of the page, have a button that says "remove password" -->
-<!-- when the button is clicked, it should show a form that has a list of all passwords and links, and a button to remove one -->
-<!-- when the remove button is clicked, it should remove the password and link from the database -->
-<!-- in the center of the page, have a button that says "change password" -->
-<!-- when the button is clicked, it should show a form that has a list of all passwords and links, and a button to change one -->
-<!-- when the change button is clicked, it should change the password and link from the database -->
-<!-- in the center of the page, have a button that says "change link" -->
-<!-- when the button is clicked, it should show a form that has a list of all passwords and links, and a button to change one -->
-<!-- when the change button is clicked, it should change the password and link from the database -->
-
-<!-- in the center of the page, have a button that says "change username" -->
-<!-- when the button is clicked, it should show a form that has a list of all usernames and passwords, and a button to change one -->
-<!-- when the change button is clicked, it should change the username and password from the database -->
-
-<html>
-<head>
-<title>coderunner.me admin panel</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me admin panel</h1>
-<form action="admin.php" method="post">
-<input type="submit" value="back to homepage">
-</form>
-</body>
-</html>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT password, link FROM passwords";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-if ($_POST["password"] == $row["password"]) {
-header("Location: " . $row["link"]);
-}
-}
-} else {
-echo "0 results";
-}
-$conn->close();
+    $link = mysqli_connect("localhost", "root", "", "coderunner");
+    $query = "SELECT * FROM `passwords`";
+    $result = mysqli_query($link, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        echo $row['password'] . " " . $row['link'] . "<br>";
+    }
 
 ?>
-
-<!DOCTYPE html>
-<!-- Path: addpassword.html -->
-<!-- make a website add password form -->
-
-<html>
-<head>
-<title>coderunner.me add password</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me add password</h1>
-<form action="addpassword.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="text" name="link" placeholder="link">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "INSERT INTO passwords (password, link)
-VALUES ('" . $_POST["password"] . "', '" . $_POST["link"] . "')";
-if ($conn->query($sql) === TRUE) {
-echo "New record created successfully";
-} else {
-echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<!-- Path: removepassword.html -->
-<!-- make a website remove password form -->
-
-<html>
-<head>
-<title>coderunner.me remove password</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me remove password</h1>
-<form action="removepassword.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="text" name="link" placeholder="link">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "DELETE FROM passwords WHERE password='" . $_POST["password"] . "' AND link='" . $_POST["link"] . "'";
-if ($conn->query($sql) === TRUE) {
-echo "Record deleted successfully";
-} else {
-echo "Error deleting record: " . $conn->error;
-}
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<!-- Path: changepassword.html -->
-
-<html>
-<head>
-<title>coderunner.me change password</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me change password</h1>
-<form action="changepassword.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="text" name="link" placeholder="link">
-<input type="text" name="newpassword" placeholder="new password">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "UPDATE passwords SET password='" . $_POST["newpassword"] . "' WHERE password='" . $_POST["password"] . "' AND link='" . $_POST["link"] . "'";
-if ($conn->query($sql) === TRUE) {
-echo "Record updated successfully";
-} else {
-echo "Error updating record: " . $conn->error;
-}
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<!-- Path: changelink.html -->
-
-<html>
-<head>
-<title>coderunner.me change link</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me change link</h1>
-<form action="changelink.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="text" name="link" placeholder="link">
-<input type="text" name="newlink" placeholder="new link">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "UPDATE passwords SET link='" . $_POST["newlink"] . "' WHERE password='" . $_POST["password"] . "' AND link='" . $_POST["link"] . "'";
-if ($conn->query($sql) === TRUE) {
-echo "Record updated successfully";
-} else {
-echo "Error updating record: " . $conn->error;
-}
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<!-- Path: changepasswordandlink.html -->
-
-<html>
-<head>
-<title>coderunner.me change password and link</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me change password and link</h1>
-<form action="changepasswordandlink.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="text" name="link" placeholder="link">
-<input type="text" name="newpassword" placeholder="new password">
-<input type="text" name="newlink" placeholder="new link">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "UPDATE passwords SET password='" . $_POST["newpassword"] . "', link='" . $_POST["newlink"] . "' WHERE password='" . $_POST["password"] . "' AND link='" . $_POST["link"] . "'";
-if ($conn->query($sql) === TRUE) {
-echo "Record updated successfully";
-} else {
-echo "Error updating record: " . $conn->error;
-}
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<!-- Path: index.html -->
-
-<html>
-<head>
-<title>coderunner.me</title>
-</head>
-<body>
-<h1>Welcome to coderunner.me</h1>
-<form action="index.php" method="post">
-<input type="text" name="password" placeholder="password">
-<input type="submit" value="submit">
-</form>
-</body>
-</html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coderunnerme";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT link FROM passwords WHERE password='" . $_POST["password"] . "'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "Link: " . $row["link"];
-}
-} else {
-echo "0 results";
-}
-$conn->close();
-?>
-

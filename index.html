@@ -1,80 +1,111 @@
-<!-- make a website homepage -->
-<!-- at the top center of the page, have it say as a title, "Welcome to coderunner.me, you can enter a page password here, and access pages here" -->
-<!-- in the center of the page, have a password input box-->
-<!-- below the password input box, have a button that says "submit" -->
-<!-- when the button is clicked, it should check if the password is correct, it should say "password does not exsist" -->
-<!-- if the password is correct, it will redirect the user to a web page based on the password inputed-->
-<!-- in the top corner of the page, there should be a username and password box that is hidden unless you click a admin pannel button in its place, if you enter the correct user name and password, you can add valid passwords and the links that they are assoiated with -->
-<!-- the admin pannel should be a seperate page, and should have a button that says "back to homepage" -->
-<!-- the admin pannel should have a button that says "add password" -->
-<!-- when the add password button is clicked, it should show a form that has a password input box, and a link input box -->
-<!-- when the form is submitted, it should add the password and link to the database -->
-<!-- the admin pannel should have a button that says "remove password" -->
-<!-- when the remove password button is clicked, it should show a form that has a list of all passwords and links, and a button to remove one -->
-<!-- when the remove button is clicked, it should remove the password and link from the database -->
-<!-- the admin pannel should have a button that says "change password" -->
-<!-- when the change password button is clicked, it should show a form that has a list of all passwords and links, and a button to change one -->
-<!-- when the change button is clicked, it should change the password and link from the database -->
-<!-- the admin pannel should have a button that says "change link" -->
-<!-- when the change link button is clicked, it should show a form that has a list of all passwords and links, and a button to change one -->
-<!-- when the change button is clicked, it should change the password and link from the database -->
+<!-- make a website where you can enter a password and go to a url related to that password-->
+<!-- store the passwords client side-->
+<!-- if you get the password right the password is tied to a website url that is set by a checker in the code-->
 
-<!-- the admin pannel should have a button that says "change username" -->
-<!-- when the change username button is clicked, it should show a form that has a list of all usernames and passwords, and a button to change one -->
-<!-- when the change button is clicked, it should change the username and password from the database -->
+<html>
+    <head>
+        <title>welcome to coderunner.me, enter your password here</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            var password = "password";
+            var url = "https://www.google.com";
+            var password2 = "password2";
+            var url2 = "https://www.youtube.com";
+            var password3 = "password3";
+            var url3 = "https://www.reddit.com";
+            var password4 = "password4";
+            var url4 = "https://www.facebook.com";
+            var password5 = "password5";
+            var url5 = "https://www.twitter.com";
+            var password6 = "password6";
+            var url6 = "https://www.instagram.com";
+            var password7 = "password7";
+            var url7 = "https://www.netflix.com";
+            var password8 = "password8";
+            var url8 = "https://www.amazon.com";
+            var password9 = "password9";
+            var url9 = "https://www.ebay.com";
+            var password10 = "password10";
+            var url10 = "https://www.walmart.com";
+            var password11 = "password11";
+            var url11 = "https://www.target.com";
+            var password12 = "password12";
+            var url12 = "https://www.bestbuy.com";
+            var password13 = "password13";
+            var url13 = "https://www.apple.com";
+            var password14 = "password14";
+            var url14 = "https://www.microsoft.com";
+            var password15 = "password15";
+            var url15 = "https://www.sony.com";
+            var password16 = "password16";
+            var url16 = "https://www.adobe.com";
+            var password17 = "password17";
+            var url17 = "https://www.cisco.com";
+            var password18 = "password18";
+            var url18 = "https://www.oracle.com";
+            var password19 = "password19";
+            var url19 = "https://www.intel.com";
+            var password20 = "password20";
+            var url20 = "https://www.nvidia.com";
+            var password21 = "password21";
+            var url21 = "https://www.amd.com";
+            var password22 = "password22";
 
-<!-- make buttons to access admin panel-->
-<!-- make a button to access the admin panel -->
-
-<!-- make a button to access the admin panel -->
-
-<!-- make a button to access the admin panel -->
-
-<html>  
-<head>
-    <title>coderunner.me</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>coderunner.me</h1>
-    </div>
-    <div class="content">
-        <h2>you can enter a page password here, and access pages here</h2>
-        <form action="index.php" method="post">
-            <input type="text" name="password" placeholder="password">
-            <input type="submit" name="submit" value="submit">
-        </form>
-    </div>
-    <div class="footer">
-        <h3>footer</h3>
-    </div>
-</body>
+            function check() {
+                var input = document.getElementById("input").value;
+                if (input == password) {
+                    window.location.href = url;
+                } else if (input == password2) {
+                    window.location.href = url2;
+                } else if (input == password3) {
+                    window.location.href = url3;
+                } else if (input == password4) {
+                    window.location.href = url4;
+                } else if (input == password5) {
+                    window.location.href = url5;
+                } else if (input == password6) {
+                    window.location.href = url6;
+                } else if (input == password7) {
+                    window.location.href = url7;
+                } else if (input == password8) {
+                    window.location.href = url8;
+                } else if (input == password9) {
+                    window.location.href = url9;
+                } else if (input == password10) {
+                    window.location.href = url10;
+                } else if (input == password11) {
+                    window.location.href = url11;
+                } else if (input == password12) {
+                    window.location.href = url12;
+                } else if (input == password13) {
+                    window.location.href = url13;
+                } else if (input == password14) {
+                    window.location.href = url14;
+                } else if (input == password15) {
+                    window.location.href = url15;
+                } else if (input == password16) {
+                    window.location.href = url16;
+                } else if (input == password17) {
+                    window.location.href = url17;
+                } else if (input == password18) {
+                    window.location.href = url18;
+                } else if (input == password19) {
+                    window.location.href = url19;
+                } else if (input == password20) {
+                    window.location.href = url20;
+                } else if (input == password21) {
+                    window.location.href = url21;
+                } else if (input == password22) {
+                    window.location.href = url22;
+                } else {
+                    alert("wrong password");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="input">
+        <button onclick="check()">check</button>
+    </body>
 </html>
 
-<?php
-    $password = $_POST['password'];
-    $submit = $_POST['submit'];
-    $link = mysqli_connect("localhost", "root", "", "coderunner");
-    $query = "SELECT * FROM `passwords` WHERE `password` = '$password'";
-    $result = mysqli_query($link, $query);
-    $row = mysqli_fetch_array($result);
-    if ($submit) {
-        if ($row['password'] == $password) {
-            header("Location: " . $row['link']);
-        } else {
-            echo "password does not exsist";
-        }
-    }
-
-?>
-
-<?php
-    $link = mysqli_connect("localhost", "root", "", "coderunner");
-    $query = "SELECT * FROM `passwords`";
-    $result = mysqli_query($link, $query);
-    while ($row = mysqli_fetch_array($result)) {
-        echo $row['password'] . " " . $row['link'] . "<br>";
-    }
-
-?>

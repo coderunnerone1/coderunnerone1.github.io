@@ -103,29 +103,27 @@
         </script>
     </head>
     <body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyChEvixQ9bwidUl8lYd0OA0g2jipK9bzLI",
-    authDomain: "coderunnerme.firebaseapp.com",
-    projectId: "coderunnerme",
-    storageBucket: "coderunnerme.appspot.com",
-    messagingSenderId: "5462217235",
-    appId: "1:5462217235:web:8ead8bb1a7bf6e1b7de5e6",
-    measurementId: "G-H8VEMZM2PH"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyChEvixQ9bwidUl8lYd0OA0g2jipK9bzLI",
+                authDomain: "coderunnerme.firebaseapp.com",
+                projectId: "coderunnerme",
+                storageBucket: "coderunnerme.appspot.com",
+                messagingSenderId: "5462217235",
+                appId: "1:5462217235:web:8ead8bb1a7bf6e1b7de5e6",
+                measurementId: "G-H8VEMZM2PH"
+            };
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+        </script>
 
         <input type="text" id="input">
         <button onclick="check()">check</button>
